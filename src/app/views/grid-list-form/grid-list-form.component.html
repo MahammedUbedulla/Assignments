@@ -1,0 +1,45 @@
+<div class="main_content">
+    <div class="container">
+        <div class="grid_edit">
+            <h3>Employee Details Form</h3>
+            <!-- (ngSubmit)="onSubmit()" -->
+            <form novalidate [formGroup]="employeeForm">
+
+                <div class="form-group" [ngClass]="{'has-error':employeeForm.controls['NAME'].invalid && employeeForm.controls['NAME'].touched}">
+                    <label for="name">Name of Employee *</label>
+                    <input type="text" class="form-control" id="name" [(ngModel)]="message.Name" [formControl]="employeeForm.controls['NAME']">
+
+                    <span *ngIf="employeeForm.controls['NAME'].hasError('required') && employeeForm.controls['NAME'].touched"
+                        class="error_msg">This Field is Required</span>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error':employeeForm.controls['EMAIL'].invalid && employeeForm.controls['EMAIL'].touched}">
+                    <label for="email">Email Address *</label>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="message.Email" [formControl]="employeeForm.controls['EMAIL']" />
+
+                    <span *ngIf="!employeeForm.controls['EMAIL'].hasError('required') && (employeeForm.controls['EMAIL'].invalid &&  employeeForm.controls['EMAIL'].touched)"
+                        class="error_msg">Please Enter Valid Email Address</span>
+                    <span *ngIf="employeeForm.controls['EMAIL'].hasError('required') && employeeForm.controls['EMAIL'].touched"
+                        class="error_msg">This Field is Required</span>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error':employeeForm.controls['MOBILE'].invalid && employeeForm.controls['MOBILE'].touched}">
+                    <label for="mobileNum">Mobile Number *</label>
+                    <input type="text" minlength="10" maxlength="10" class="form-control" id="mobileNum" [(ngModel)]="message.Mobile"
+                        [formControl]="employeeForm.controls['MOBILE']" appNumberOnly/>
+
+                    <span *ngIf="!employeeForm.controls['MOBILE'].hasError('required') && (employeeForm.controls['MOBILE'].invalid &&  employeeForm.controls['MOBILE'].touched)"
+                        class="error_msg">Please Enter atleast 10 Numbers</span>
+                    <span *ngIf="employeeForm.controls['MOBILE'].hasError('required') && employeeForm.controls['MOBILE'].touched"
+                        class="error_msg">This Field is Required</span>
+                </div>
+
+                <app-address-form [AddressForm]="employeeForm.controls.ADDRESS"></app-address-form>
+
+                <button type="submit" id="submitBtn" [class.disabled]="employeeForm.invalid" (click)="getAllValues()"
+                    class="btn btn-primary">Submit</button>
+                <button type="button" id="cancelBtn" routerLink="/gridList" class="btn btn-primary">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

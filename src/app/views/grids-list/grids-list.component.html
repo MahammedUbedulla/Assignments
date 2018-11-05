@@ -1,0 +1,27 @@
+<div class="main-content">
+  <div class="container">
+    <div class="gridsLists">
+      <h3> Employee Details </h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let grid of gridsList; let i=index">
+            <td>{{grid.SNo}}</td>
+            <td>{{grid.Name}}</td>
+            <td>{{grid.Email}}</td>
+            <td>{{grid.Mobile}}</td>
+            <td><button type="button" (click)="NavigateLink(grid)" class="btn btn-primary">Edit Details</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

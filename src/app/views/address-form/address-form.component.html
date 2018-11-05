@@ -1,0 +1,33 @@
+<h4>Address of Employee</h4>
+<div [formGroup]="AddressForm">
+  <div class="form-group" [ngClass]="{'has-error':AddressForm.controls['PINCODE'].invalid && AddressForm.controls['PINCODE'].touched}">
+    <label for="pincode">PinCode *</label>
+    <input type="text" minlength="6" maxlength="6" class="form-control" id="pincode" formControlName="PINCODE" appNumberOnly/>
+
+    <span *ngIf="!AddressForm.controls['PINCODE'].hasError('required') && (AddressForm.controls['PINCODE'].invalid && AddressForm.controls['PINCODE'].touched)"
+      class="error_msg">Please enter atleast 6 numbers</span>
+    <span *ngIf="AddressForm.controls['PINCODE'].hasError('required') && AddressForm.controls['PINCODE'].touched" class="error_msg">This
+      field is required</span>
+  </div>
+  <div class="form-group" [ngClass]="{'has-error':AddressForm.controls['CITY'].invalid && AddressForm.controls['CITY'].touched}">
+    <label for="city">City *</label>
+    <input type="text" class="form-control" id="city" formControlName="CITY">
+
+    <span *ngIf="AddressForm.controls['CITY'].hasError('required') && AddressForm.controls['CITY'].touched" class="error_msg">This
+      field is required</span>
+  </div>
+  <div class="form-group">
+    <label for="state">State *</label>
+    <input type="text" class="form-control" id="state" formControlName="STATE">
+
+    <span *ngIf="AddressForm.controls['STATE'].hasError('required') && AddressForm.controls['STATE'].touched" class="error_msg">This
+      field is required</span>
+  </div>
+  <div class="form-group">
+    <label for="country">Country *</label>
+    <input type="text" class="form-control" id="country" formControlName="COUNTRY">
+
+    <span *ngIf="AddressForm.controls['COUNTRY'].hasError('required') && AddressForm.controls['COUNTRY'].touched" class="error_msg">This
+      field is required</span>
+  </div>
+</div>

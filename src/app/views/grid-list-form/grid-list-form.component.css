@@ -1,0 +1,10 @@
+.error_msg{
+    color: red;
+}
+h3{
+    text-align: center;
+    margin: 30px 0px;
+}
+#submitBtn{
+    margin-right: 20px;
+}
